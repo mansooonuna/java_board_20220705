@@ -8,7 +8,7 @@ public class Main {
     System.out.println("== 게시판 v 0.1 ==");
     System.out.println("== 프로그램 시작 ==");
 
-    int articleNO = 1;
+    int articleNo = 1;
     String id = "dasom";
 
     while (true) {
@@ -29,17 +29,11 @@ public class Main {
         System.out.print("내용 : ");
         String body = sc.nextLine();
 
-        Article article = new Article();
-        article.articleNo = articleNO;
-        article.userId = id;
-        article.title = title;
-        article.body = body;
-
+        Article article = new Article(articleNo, id, title, body);
         System.out.println(article);
 
-
-        System.out.println(articleNO + "번 게시물이 등록되었습니다.");
-        articleNO++;
+        System.out.println(articleNo + "번 게시물이 등록되었습니다.");
+        articleNo++;
 
 
       }
@@ -56,15 +50,21 @@ public class Main {
 
 
 class Article {
+
   int articleNo;
   String userId;
   String title;
   String body;
 
+  Article(int articleNo, String userId, String title, String body) {
+    this.articleNo = articleNo;
+    this.userId = userId;
+    this.title = title;
+    this.body = body;
+  }
+
   @Override
   public String toString() {
-    String[] articleMade = {String.valueOf(articleNo), userId, title, body};
-
     return String.format("{ 글번호 : %d, 제  목 : \"%s\", 내  용 : \"%s\" }", articleNo, title, body);
 
   }
